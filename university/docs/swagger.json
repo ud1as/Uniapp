@@ -1,0 +1,143 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample server of University project",
+        "title": "University app",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Dias Utekin",
+            "email": "dias.utekin@nu.edu.kz"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api/v1",
+    "paths": {
+        "/students": {
+            "get": {
+                "description": "Get all students",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "students"
+                ],
+                "summary": "GetStudents Get all students",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/github_com_Studio56School_university_internal_model.Student"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/students/create": {
+            "post": {
+                "description": "Create Student",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "students"
+                ],
+                "summary": "CreateStudent",
+                "operationId": "create-student",
+                "parameters": [
+                    {
+                        "description": "create account",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/github_com_Studio56School_university_internal_model.Student"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_Studio56School_university_internal_model.Student"
+                        }
+                    }
+                }
+            }
+        },
+        "/students/{id}": {
+            "get": {
+                "description": "Get student by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "students"
+                ],
+                "summary": "GetStudentsById",
+                "operationId": "get-student",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_Studio56School_university_internal_model.Student"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete Student",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "students"
+                ],
+                "summary": "DeleteStudent",
+                "operationId": "delete-student",
+                "responses": {
+                    "200": {
+                        "description": "Successful deleted user with id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "github_com_Studio56School_university_internal_model.Student": {
+            "type": "object",
+            "properties": {
+                "gender": {
+                    "type": "string",
+                    "example": "F"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Madina"
+                },
+                "surname": {
+                    "type": "string",
+                    "example": "Akhmetova"
+                }
+            }
+        }
+    }
+}

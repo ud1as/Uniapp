@@ -1,0 +1,96 @@
+basePath: /api/v1
+definitions:
+  github_com_Studio56School_university_internal_model.Student:
+    properties:
+      gender:
+        example: F
+        type: string
+      name:
+        example: Madina
+        type: string
+      surname:
+        example: Akhmetova
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: dias.utekin@nu.edu.kz
+    name: Dias Utekin
+  description: This is a sample server of University project
+  termsOfService: http://swagger.io/terms/
+  title: University app
+  version: "1.0"
+paths:
+  /students:
+    get:
+      consumes:
+      - application/json
+      description: Get all students
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/github_com_Studio56School_university_internal_model.Student'
+            type: array
+      summary: GetStudents Get all students
+      tags:
+      - students
+  /students/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Student
+      operationId: delete-student
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful deleted user with id
+          schema:
+            type: string
+      summary: DeleteStudent
+      tags:
+      - students
+    get:
+      consumes:
+      - application/json
+      description: Get student by id
+      operationId: get-student
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Studio56School_university_internal_model.Student'
+      summary: GetStudentsById
+      tags:
+      - students
+  /students/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Student
+      operationId: create-student
+      parameters:
+      - description: create account
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_Studio56School_university_internal_model.Student'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Studio56School_university_internal_model.Student'
+      summary: CreateStudent
+      tags:
+      - students
+swagger: "2.0"
